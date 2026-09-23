@@ -1,0 +1,59 @@
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Inter,Segoe UI,Arial,sans-serif;background:#edf1ed;color:#10222d}
+button,a{font:inherit}
+.layout-page{width:100%;height:100%;display:flex;flex-direction:column;background:#edf1ed}
+
+.topbar{height:68px;min-height:68px;background:rgba(7,24,36,.97);color:#fff;display:flex;align-items:center;padding:0 18px;gap:18px;position:relative;z-index:10;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 3px 14px rgba(0,0,0,.16)}
+.back-btn{display:flex;align-items:center;gap:7px;color:#bfeaff;text-decoration:none;font-size:14px;font-weight:600;min-width:125px}
+.back-btn span:first-child{font-size:32px;line-height:16px;font-weight:300}
+.page-title{flex:1;min-width:0}
+.page-title strong{display:block;font-size:16px;letter-spacing:.2px}
+.page-title small{display:block;color:#8fa8b7;font-size:11px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-spacer{width:125px}
+
+.map-area{position:relative;flex:1;min-height:0;overflow:hidden;background:#e8ede9}
+#map{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;display:block}
+#map.dragging{cursor:grabbing}
+#map .kml-line{fill:none;stroke:#1677a5;stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:.82}
+#map .kml-poly{fill:rgba(22,119,165,.075);stroke:#1677a5;stroke-width:1.1;vector-effect:non-scaling-stroke}
+#map .kml-point{fill:#ef9b36;stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke}
+
+.map-controls{position:absolute;right:20px;top:20px;display:flex;flex-direction:column;gap:8px;padding:8px;background:rgba(7,24,36,.90);border:1px solid rgba(255,255,255,.13);border-radius:14px;box-shadow:0 8px 26px rgba(0,0,0,.22);z-index:5}
+.map-control{width:44px;height:44px;border:0;border-radius:9px;background:#102e40;color:#fff;font-size:25px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .15s,transform .1s}
+.map-control:hover{background:#16445c}
+.map-control:active{transform:scale(.94)}
+.icon-control{font-size:20px}
+.gps-control{color:#70d5ff}
+.control-divider{height:1px;background:rgba(255,255,255,.15);margin:1px 3px}
+
+.map-label{position:absolute;left:20px;top:20px;background:rgba(7,24,36,.88);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 12px;color:#d9edf6;font-size:10px;font-weight:700;letter-spacing:1.2px;box-shadow:0 5px 18px rgba(0,0,0,.16);z-index:4}
+.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4bc184;margin-right:7px;box-shadow:0 0 0 3px rgba(75,193,132,.13)}
+
+.gps-marker{position:absolute;width:30px;height:30px;transform:translate(-50%,-50%);z-index:6;pointer-events:none}
+.gps-core{position:absolute;left:7px;top:7px;width:16px;height:16px;border-radius:50%;background:#176cff;border:4px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.gps-pulse{position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:rgba(23,108,255,.20);animation:gpspulse 1.8s infinite}
+@keyframes gpspulse{0%,100%{transform:scale(.8);opacity:.8}50%{transform:scale(1.25);opacity:.25}}
+
+.message{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);max-width:min(620px,calc(100% - 40px));background:rgba(7,24,36,.94);color:#fff;padding:11px 15px;border-radius:9px;font-size:12px;box-shadow:0 7px 24px rgba(0,0,0,.22);z-index:8;text-align:center}
+.hidden{display:none!important}
+
+.map-footer{height:34px;min-height:34px;background:#091a27;color:#8fa8b7;display:flex;align-items:center;justify-content:center;gap:10px;font-size:10px;letter-spacing:.2px}
+.footer-separator{opacity:.5}
+
+@media(max-width:650px){
+  .topbar{height:60px;min-height:60px;padding:0 11px;gap:10px}
+  .back-btn{min-width:auto;font-size:12px}
+  .back-btn span:first-child{font-size:28px}
+  .header-spacer{display:none}
+  .page-title{text-align:center}
+  .page-title strong{font-size:14px}
+  .map-controls{right:12px;top:12px;padding:6px;gap:6px}
+  .map-control{width:42px;height:42px}
+  .map-label{left:12px;top:12px;font-size:9px;padding:8px 10px}
+}
+
+/* GPS marker is rendered inside the SVG coordinate system so it stays locked to the map during zoom/pan. */
+.gps-svg-layer { pointer-events:none; }
+.gps-accuracy { fill:currentColor; stroke:currentColor; opacity:.25; }
+.gps-pulse-svg { fill:none; stroke:currentColor; stroke-width:2; opacity:.55; }
+.gps-core-svg { fill:currentColor; stroke:#fff; stroke-width:2; }

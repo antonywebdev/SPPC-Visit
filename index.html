@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPPC Visit</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07131f;
+      color: white;
+    }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-wrap {
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 78vh;
+      object-fit: contain;
+      background: #000;
+      pointer-events: none;
+    }
+    .content {
+      padding: 24px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 48px);
+    }
+    p {
+      margin: 0 0 20px;
+      color: #a9bbc7;
+    }
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 10px;
+      background: #1598cf;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="video-wrap">
+      <video id="introVideo" autoplay muted playsinline preload="auto">
+        <source src="videos/0.1.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="content">
+      <h1>SPPC Visit</h1>
+      <p>Solar PV Project</p>
+      <a class="button" href="layout.html">Open Project Layout →</a>
+    </div>
+  </div>
+
+  <script>
+    const video = document.getElementById("introVideo");
+
+    // Play the video automatically when the page opens.
+    video.play().catch(() => {});
+
+    // After the video finishes, wait 3 seconds and play it again.
+    video.addEventListener("ended", () => {
+      setTimeout(() => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

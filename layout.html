@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SPPC Visit — Project Layout</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="layout-page">
+<header class="topbar">
+  <a href="index.html" class="back-btn" aria-label="Back to project"><span>‹</span><span>SPPC Visit</span></a>
+  <div class="page-title"><strong>Project Layout</strong><small id="status">Loading project layout…</small></div>
+  <div class="header-spacer"></div>
+</header>
+<main class="map-area">
+  <canvas id="map" aria-label="Offline project layout"></canvas>
+  <div class="map-controls">
+    <button id="zoomIn" class="map-control" title="Zoom in" aria-label="Zoom in">+</button>
+    <button id="zoomOut" class="map-control" title="Zoom out" aria-label="Zoom out">−</button>
+    <div class="control-divider"></div>
+    <button id="fitAll" class="map-control icon-control" title="Fit entire layout" aria-label="Fit entire layout">⌂</button>
+    <button id="locate" class="map-control icon-control gps-control" title="Find current location" aria-label="Find current location">◎</button>
+  </div>
+  <div class="map-label"><span class="status-dot"></span><span>OFFLINE PROJECT LAYOUT</span></div>
+  <div id="message" class="message hidden"></div>
+</main>
+<footer class="map-footer"><span id="featureCount">0 features</span><span class="footer-separator">•</span><span>Road(2).kml</span></footer>
+<script src="kml-data.js"></script>
+<script src="layout.js"></script>
+</body>
+</html>

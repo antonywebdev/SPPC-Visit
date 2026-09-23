@@ -1,0 +1,9 @@
+[
+  {
+    "id": "VIDEO-001",
+    "name": "Example Location",
+    "latitude": 0,
+    "longitude": 0,
+    "video": "videos/VIDEO-001.mp4"
+  }
+]
