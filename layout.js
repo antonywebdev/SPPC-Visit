@@ -159,7 +159,7 @@ function openPvVideo() {
 
     const video = document.createElement("video");
     video.id = "pvVideoPlayer";
-    video.src = "videos/PV.mp4";
+    video.src = "Videos/PV.mp4";
     video.autoplay = true;
     video.loop = true;
     video.controls = true;
