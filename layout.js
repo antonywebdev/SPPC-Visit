@@ -550,5 +550,35 @@ window.addEventListener("resize", resizeCanvas);
 setInterval(() => {
   if (gpsFix) draw();
 }, 1000);
+function offlineView() {
+  const sppc = 'my-site-v1';
 
+const FILES_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/layout.html',
+  '/kml-data.js',
+  '/layout.html',
+  '/layout.js',
+  '/styles.css',
+  '/Videos/PV.mp4',
+  '/Videos/0.1.mp4',
+  'videos/VIDEO-001.mp4'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(sppc)
+      .then(cache => cache.addAll(FILES_TO_CACHE))
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
+});
+}
 initialize();
+offlineView();
